@@ -9,7 +9,7 @@
     <style>
       :host {
         display: block;
-        border-radius: 5px;
+        
       }
       paper-checkbox{
         --paper-checkbox-checked-color: {
@@ -21,9 +21,12 @@
       }
       paper-card{
         --paper-card:{
-          with:100%;
+          max-width:100%;
           border-radius:5px;
           box-shadow:none;
+          padding:1rem;
+          position: relative;
+          padding:3px;
         }
       }
       paper-button {
@@ -38,14 +41,14 @@
     
     <paper-card heading="" animated="false">
       <h2>LOGIN</h2>
-      <paper-input placeholder="Email" propeemail="{{propeemail}}"></paper-input>
-      <paper-input placeholder="..." type="password"></paper-input>
+      <paper-input placeholder="Email" value="[[propemail]]" id="Inputemail"></paper-input>
+      <paper-input placeholder="..." type="password" value="[[propcontraseña]]" id="Inputcontra"></paper-input>
       <iron-icon icon="mail" slot="prefix"></iron-icon>
       <paper-checkbox>Remember me</paper-checkbox>
       <div class="card-actions">
         <br>
         <br>
-          <paper-button on-click="Validarlogin()" class="pink">{{Usuariologueado.value}}</paper-button>  
+          <paper-button on-click="Validarlogin" class="pink">LOGIN</paper-button>  
     </div>
     <slot></slot>
   </paper-card>
@@ -79,20 +82,20 @@
             type: String,
             value: ''
           },
-          Usuariologueado:{
-            type: String,
-            value: '',
-            computed: 'Validarlogi(propemail, propcontraseña)'
-          }
+          
         };
       }
       Validarlogin(){
         // console.log(computed);
-        if(!computed){
-          alert('tu correo o contraseña esta mal');
+        this.propemail = this.$.Inputemail.value;
+        this.propcontraseña = this.$.Inputcontra.value;
+
+        if(!this.email == '' && !this.propcontraseña == ''){
+          //this.dentro = true;
+          alert('Ya entraste');
           
         }else{
-          alert('estas dentro');
+          alert('nada que ver aqui');
         }
       }
     }
