@@ -45,7 +45,7 @@
       <div class="card-actions">
         <br>
         <br>
-          <paper-button on-click="Validarlogin()" class="pink">LOGIN</paper-button>  
+          <paper-button on-click="Validarlogin()" class="pink">{{Usuariologueado.value}}</paper-button>  
     </div>
     <slot></slot>
   </paper-card>
@@ -66,28 +66,28 @@
       static get is() { return 'componente-login'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'componente-login'
+          dentro: {
+            type: Boolean,
+            notify: true
           },
           propemail:{
             type: String,
-            value:'ivan@ivan.com'
+            value:''
             
           },
           propcontraseña:{
             type: String,
-            value: '1234'
+            value: ''
           },
           Usuariologueado:{
             type: String,
             value: '',
-            computed: 'Validarlogin(propemail, propcontraseña)'
+            computed: 'Validarlogi(propemail, propcontraseña)'
           }
         };
       }
       Validarlogin(){
-        console.log(computed);
+        // console.log(computed);
         if(!computed){
           alert('tu correo o contraseña esta mal');
           
