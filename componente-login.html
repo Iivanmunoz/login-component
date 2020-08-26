@@ -19,7 +19,11 @@
         
       }
       paper-input{
-        box-shadow:50px;
+       width: 100%;
+       --paper-input-container:{
+         padding:0px 0px 10px 10px;
+         background-color:rgb(228, 228, 228);
+       }
         
       }
       paper-card{
@@ -47,6 +51,8 @@
     <paper-card heading="" animated="false">
       <h2>LOGIN</h2>
       <paper-input placeholder="Email" value="[[propemail]]" id="Inputemail"></paper-input>
+      <br>
+      <br>
       <paper-input placeholder="..." type="password" value="[[propcontraseña]]" id="Inputcontra"></paper-input>
       <iron-icon icon="mail" slot="prefix"></iron-icon>
       <paper-checkbox>Remember me</paper-checkbox>
@@ -74,8 +80,9 @@
       static get is() { return 'componente-login'; }
       static get properties() {
         return {
-          dentro: {
+          usuariodentro: {
             type: Boolean,
+            value:false,
             notify: true
           },
           propemail:{
@@ -99,11 +106,12 @@
         let propemail = this.$.Inputemail.value;
         let propcontraseña = this.$.Inputcontra.value;
 
-        if(!propemail == '' && !propcontraseña == ''){
+        if(propemail == 'ivan@ivan' && propcontraseña == 'ivan'){
            alert('Ya entraste');
+           this.usuariodentro = true;
         }else{
-         alert('nada que ver aqui');
-          // this.dentro = true;
+           alert('nada que ver aqui');
+           this.usuariodentro = false;
         }
       }
     }
