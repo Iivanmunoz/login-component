@@ -1,8 +1,8 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../componente-login/bower_components/paper-input/paper-input.html">
-<link rel="import" href="../componente-login/bower_components/paper-button/paper-button.html">
-<link rel="import" href="../componente-login/bower_components/paper-card/paper-card.html">
-<link rel="import" href="../componente-login/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
 
 <dom-module id="componente-login">
   <template>
@@ -12,21 +12,26 @@
         
       }
       paper-checkbox{
-        --paper-checkbox-checked-color: {
+        --paper-checkbox-checked-color: #d13f8d;
+        --paper-checkbox-unchecked-color: #d13f8d;
+        --paper-checkbox-label-color: #d13f8d;
           
-        }
+        
       }
       paper-input{
         box-shadow:50px;
+        
       }
       paper-card{
         --paper-card:{
           max-width:100%;
           border-radius:5px;
-          box-shadow:none;
           padding:1rem;
           position: relative;
-          padding:3px;
+          
+          border-color:red;
+          border:20px;
+          
         }
       }
       paper-button {
@@ -75,27 +80,29 @@
           },
           propemail:{
             type: String,
-            value:''
+            value:'',
+            notify: true
+            
             
           },
           propcontraseña:{
             type: String,
-            value: ''
+            value: '',
+            notify: true
+            // computed: 'validarlogin(propemail,propcontraseña)'
           },
           
         };
       }
       Validarlogin(){
         // console.log(computed);
-        this.propemail = this.$.Inputemail.value;
-        this.propcontraseña = this.$.Inputcontra.value;
+        let propemail = this.$.Inputemail.value;
+        let propcontraseña = this.$.Inputcontra.value;
 
-        if(!this.email == '' && !this.propcontraseña == ''){
-          
-          alert('nada que ver aqui');
-          
+        if(!propemail == '' && !propcontraseña == ''){
+           alert('Ya entraste');
         }else{
-          alert('Ya entraste');
+         alert('nada que ver aqui');
           // this.dentro = true;
         }
       }
