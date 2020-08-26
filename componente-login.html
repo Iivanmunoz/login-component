@@ -1,13 +1,56 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../componente-login/bower_components/paper-input/paper-input.html">
+<link rel="import" href="../componente-login/bower_components/paper-button/paper-button.html">
+<link rel="import" href="../componente-login/bower_components/paper-card/paper-card.html">
+<link rel="import" href="../componente-login/bower_components/paper-checkbox/paper-checkbox.html">
 
 <dom-module id="componente-login">
   <template>
     <style>
       :host {
         display: block;
+        border-radius: 5px;
       }
+      paper-checkbox{
+        --paper-checkbox-checked-color: {
+          
+        }
+      }
+      paper-input{
+        box-shadow:50px;
+      }
+      paper-card{
+        --paper-card:{
+          with:100%;
+          border-radius:5px;
+          box-shadow:none;
+        }
+      }
+      paper-button {
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background:#E832E0;
+        margin: 100px;
+      }
+      
+      
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    
+    <paper-card heading="" animated="false">
+      <h2>LOGIN</h2>
+      <paper-input placeholder="Email" propeemail="{{propeemail}}"></paper-input>
+      <paper-input placeholder="..." type="password"></paper-input>
+      <iron-icon icon="mail" slot="prefix"></iron-icon>
+      <paper-checkbox>Remember me</paper-checkbox>
+      <div class="card-actions">
+        <br>
+        <br>
+          <paper-button on-click="Validarlogin()" class="pink">LOGIN</paper-button>  
+    </div>
+    <slot></slot>
+  </paper-card>
+
+
   </template>
 
   <script>
@@ -26,8 +69,31 @@
           prop1: {
             type: String,
             value: 'componente-login'
+          },
+          propemail:{
+            type: String,
+            value:'ivan@ivan.com'
+            
+          },
+          propcontraseña:{
+            type: String,
+            value: '1234'
+          },
+          Usuariologueado:{
+            type: String,
+            value: '',
+            computed: 'Validarlogin(propemail, propcontraseña)'
           }
         };
+      }
+      Validarlogin(){
+        console.log(computed);
+        if(!computed){
+          alert('tu correo o contraseña esta mal');
+          
+        }else{
+          alert('estas dentro');
+        }
       }
     }
 
